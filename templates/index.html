@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index.css">
+    <title>Analizador Léxico y Sintáctico</title>
+    <script>
+        function preprocessCode() {
+            var textarea = document.getElementById("code");
+            textarea.value = textarea.value.replace(/\n/g, ' ');
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Analizador Léxico y Sintáctico</h1>
+    <form action="/" method="post" onsubmit="preprocessCode()">
+        <textarea id="code" name="code" rows="10" cols="50" placeholder="Escribe tu código aquí..."></textarea><br>
+        <input type="submit" value="Analizar">
+    </form>
+
+    <div class="output-container">
+        {% if lex_output %}
+        <div class="output-box">
+            <h2>Resultado del Analizador Léxico</h2>
+            <pre>{{ lex_output }}</pre>
+        </div>
+        {% endif %}
+
+        {% if syn_output %}
+        <div class="output-box">
+            <h2>Resultado del Analizador Sintáctico</h2>
+            <pre>{{ syn_output }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

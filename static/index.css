@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 40px;
+    color: #333;
+}
+
+h1 {
+    color: #5a5a5a;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: none;
+    outline: none;
+}
+
+textarea:focus {
+    border: 2px solid #4CAF50;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.output-box {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+pre {
+    white-space: pre-wrap; /* Permite el ajuste de línea */
+    word-wrap: break-word; /* Ajusta las palabras si es necesario */
+}

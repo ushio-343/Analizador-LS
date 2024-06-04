@@ -1,0 +1,282 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     statement -> for_loop
+Rule 3     statement -> print_statement
+Rule 4     for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+Rule 5     print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+Terminals, with rules where they appear
+
+CLOSE_BRACE          : 4
+CLOSE_PAREN          : 4 5
+DOT                  : 5 5
+EQUAL                : 4
+FOR                  : 4
+ID                   : 4 4 4 5 5 5
+INT                  : 4
+LESS_EQUAL           : 4
+NUMBER               : 4 4
+OPEN_BRACE           : 4
+OPEN_PAREN           : 4 5
+PLUS                 : 5
+PLUSPLUS             : 4
+PRINTLN              : 5
+SEMICOLON            : 4 4 5
+STRING               : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+for_loop             : 2
+print_statement      : 3 4
+program              : 0
+statement            : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) statement -> . for_loop
+    (3) statement -> . print_statement
+    (4) for_loop -> . FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+    (5) print_statement -> . ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    FOR             shift and go to state 5
+    ID              shift and go to state 6
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    for_loop                       shift and go to state 3
+    print_statement                shift and go to state 4
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement .
+
+    $end            reduce using rule 1 (program -> statement .)
+
+
+state 3
+
+    (2) statement -> for_loop .
+
+    $end            reduce using rule 2 (statement -> for_loop .)
+
+
+state 4
+
+    (3) statement -> print_statement .
+
+    $end            reduce using rule 3 (statement -> print_statement .)
+
+
+state 5
+
+    (4) for_loop -> FOR . OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    OPEN_PAREN      shift and go to state 7
+
+
+state 6
+
+    (5) print_statement -> ID . DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    DOT             shift and go to state 8
+
+
+state 7
+
+    (4) for_loop -> FOR OPEN_PAREN . INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    INT             shift and go to state 9
+
+
+state 8
+
+    (5) print_statement -> ID DOT . ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    ID              shift and go to state 10
+
+
+state 9
+
+    (4) for_loop -> FOR OPEN_PAREN INT . ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    ID              shift and go to state 11
+
+
+state 10
+
+    (5) print_statement -> ID DOT ID . DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    DOT             shift and go to state 12
+
+
+state 11
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID . EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    EQUAL           shift and go to state 13
+
+
+state 12
+
+    (5) print_statement -> ID DOT ID DOT . PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    PRINTLN         shift and go to state 14
+
+
+state 13
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL . NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    NUMBER          shift and go to state 15
+
+
+state 14
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN . OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    OPEN_PAREN      shift and go to state 16
+
+
+state 15
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER . SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    SEMICOLON       shift and go to state 17
+
+
+state 16
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN . STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    STRING          shift and go to state 18
+
+
+state 17
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON . ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    ID              shift and go to state 19
+
+
+state 18
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING . PLUS ID CLOSE_PAREN SEMICOLON
+
+    PLUS            shift and go to state 20
+
+
+state 19
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID . LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    LESS_EQUAL      shift and go to state 21
+
+
+state 20
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS . ID CLOSE_PAREN SEMICOLON
+
+    ID              shift and go to state 22
+
+
+state 21
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL . NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    NUMBER          shift and go to state 23
+
+
+state 22
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID . CLOSE_PAREN SEMICOLON
+
+    CLOSE_PAREN     shift and go to state 24
+
+
+state 23
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER . SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    SEMICOLON       shift and go to state 25
+
+
+state 24
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 26
+
+
+state 25
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON . ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    ID              shift and go to state 27
+
+
+state 26
+
+    (5) print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON .
+
+    $end            reduce using rule 5 (print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON .)
+    CLOSE_BRACE     reduce using rule 5 (print_statement -> ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON .)
+
+
+state 27
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID . PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    PLUSPLUS        shift and go to state 28
+
+
+state 28
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS . CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE
+
+    CLOSE_PAREN     shift and go to state 29
+
+
+state 29
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN . OPEN_BRACE print_statement CLOSE_BRACE
+
+    OPEN_BRACE      shift and go to state 30
+
+
+state 30
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE . print_statement CLOSE_BRACE
+    (5) print_statement -> . ID DOT ID DOT PRINTLN OPEN_PAREN STRING PLUS ID CLOSE_PAREN SEMICOLON
+
+    ID              shift and go to state 6
+
+    print_statement                shift and go to state 31
+
+state 31
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement . CLOSE_BRACE
+
+    CLOSE_BRACE     shift and go to state 32
+
+
+state 32
+
+    (4) for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE .
+
+    $end            reduce using rule 4 (for_loop -> FOR OPEN_PAREN INT ID EQUAL NUMBER SEMICOLON ID LESS_EQUAL NUMBER SEMICOLON ID PLUSPLUS CLOSE_PAREN OPEN_BRACE print_statement CLOSE_BRACE .)
+
